@@ -9,8 +9,6 @@ public class Monster implements IntMonster {
 
 
 
-
-
     @Override
     public int attack() {
         return 0;
