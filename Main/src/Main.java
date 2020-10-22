@@ -13,15 +13,12 @@ public class Main {
                 String s = scn.nextLine();
                 if (checkInt(s)) {
                     if (Integer.parseInt(s) == 0) {
-
                         break;
                     }
-
                     if (Integer.parseInt(s) == 1) {
                         game.start();
                         break;
                     }
-
                     System.out.println("Введено не соответствующее число");
                 } else {
                     System.out.println("Введено не число. Повторите");
@@ -31,13 +28,11 @@ public class Main {
     }
     private static boolean checkInt(String s) {
         boolean bul = true;
-
         try {
             Integer.parseInt(s);
         } catch (Exception var3) {
             bul = false;
         }
-
         return bul;
     }
 }
