@@ -1,4 +1,4 @@
 package item;
 
-public class Armor implements IItem {
+public class Armor implements IntItem {
 }

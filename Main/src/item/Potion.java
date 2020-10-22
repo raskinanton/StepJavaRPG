@@ -1,4 +1,4 @@
 package item;
 
-public class Potion implements IItem{
+public class Potion implements IntItem {
 }

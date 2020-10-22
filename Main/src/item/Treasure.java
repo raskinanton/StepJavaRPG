@@ -1,4 +1,4 @@
 package item;
 
-public class Treasure implements IItem{
+public class Treasure implements IntItem {
 }
