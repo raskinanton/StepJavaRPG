@@ -1,4 +1,7 @@
 package player;
 
-public class Player {
+public class Player extends AbstractPlayer {
+    private Specification spec;
+
+
 }
