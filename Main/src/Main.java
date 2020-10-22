@@ -6,13 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Hello comrades!!");
-
         Scanner scn = new Scanner(System.in);
-
-        System.out.println("Hello comrades!!");
         Game game = new Game();
-
-        while(true) {
             while(true) {
                 System.out.println("Введите 1 для начала игры или 0 для выхода");
                 String s = scn.nextLine();
@@ -32,7 +27,7 @@ public class Main {
                     System.out.println("Введено не число. Повторите");
                 }
             }
-        }
+
     }
     private static boolean checkInt(String s) {
         boolean bul = true;
