@@ -1,10 +1,12 @@
 package monsters;
 
+import player.Player;
+import player.Specification;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Monster implements IntMonster {
-
 
     private String monsterName;
     private int damage;
@@ -19,12 +21,19 @@ public class Monster implements IntMonster {
     }
 
     @Override
-    public int attack() {
-        return 0;
+    public boolean attack(Player player) {
+
+//        Specification specPlayer = player.getSpec();
+//
+//        if (specPlayer.getCoins())
+
+        return true;
     }
 
     @Override
-    public int pass() {
-        return 0;
+    public boolean pass(Player player) {
+        Specification specPlayer = player.getSpec();
+        return specPlayer.getCoins() > payCoins;
+
     }
 }

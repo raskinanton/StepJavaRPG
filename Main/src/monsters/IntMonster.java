@@ -1,9 +1,11 @@
 package monsters;
 
+import player.Player;
+
 public interface IntMonster {
 
-    int attack();
-    int pass();
+    boolean attack(Player player);
+    boolean pass(Player player);
 
 
 
