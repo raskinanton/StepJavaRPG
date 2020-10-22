@@ -1,4 +1,7 @@
 package Monsters;
 
-public class MediumMonster {
+public class MediumMonster extends Monster {
+
+
+
 }
