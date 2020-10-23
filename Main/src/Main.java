@@ -1,13 +1,14 @@
 import gameplay.Game;
+import gameplay.menu.Abs;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main extends Abs {
     public static void main(String[] args) {
 
         System.out.println("Hello comrades!!");
         Scanner scn = new Scanner(System.in);
-        Game game = new Game();
+
             while(true) {
                 System.out.println("Введите 1 для начала игры или 0 для выхода");
                 String s = scn.nextLine();
@@ -16,6 +17,7 @@ public class Main {
                         break;
                     }
                     if (Integer.parseInt(s) == 1) {
+                        Game game = new Game();
                         game.start();
                         break;
                     }
@@ -26,13 +28,5 @@ public class Main {
             }
 
     }
-    private static boolean checkInt(String s) {
-        boolean bul = true;
-        try {
-            Integer.parseInt(s);
-        } catch (Exception var3) {
-            bul = false;
-        }
-        return bul;
-    }
+
 }

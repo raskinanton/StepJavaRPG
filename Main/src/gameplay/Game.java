@@ -1,14 +1,16 @@
 package gameplay;
 
+import gameplay.menu.Abs;
 import monsters.Monster;
 import player.Player;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Game {
+public class Game extends Abs {
     private Scanner scn = new Scanner(System.in);
     private ArrayList<String> ar = new ArrayList<>();
+    private ArrayList<String> label = new ArrayList(Arrays.asList( "maxhp", "coins", "armor"));
     //плайер
     private Player player;
 
@@ -19,7 +21,12 @@ public class Game {
         ar.add("Что бы сделать поправить здоровье, введите - h");
         ar.add("Что бы использовать предмет, введите - t");
         ar.add("Что бы выйти из игры, введите - q");
-        player = new Player();
+        System.out.println("введите имя игрока");
+        String name = scn.nextLine();
+        ArrayList<Integer> ar = madePlayer();
+
+        player = new Player(name, ar.get(0), ar.get(0), ar.get(1), ar.get(2));
+        //player = new Player("игрок1", 20, 20, 0, 10);
     }
 
     public void start(){
@@ -27,7 +34,7 @@ public class Game {
         while (true){
             System.out.println("параметры игрока: ");
             //player.print();
-            //printPlayer(player);
+            printPlayer(player);
             System.out.println("--------------");
             System.out.println("Выберите дальнейшую команду");
             printMenu(ar);
@@ -80,4 +87,36 @@ public class Game {
         System.out.println("Защита - "+player.getSpec().getArmor());
 
     }
+    private ArrayList<Integer> madePlayer(){
+        ArrayList<Integer> ar = new ArrayList<>();
+        for(int i=0;i<label.size();i++){
+
+                while (true){
+                    System.out.println("Введите "+label.get(i));
+                    String param = scn.nextLine();
+                    if(checkInt(param)){
+                        int par = Integer.parseInt(param);
+                        if(i==0 && par>0){
+                            ar.add(par);
+                            break;
+                        }
+                        else if(i>0 && par>-1){
+                            ar.add(par);
+                            break;
+                        }
+
+                        else{
+                            System.out.println("Вы ввели не подходящее число. Повторите");
+                        }
+                    }
+                    else{
+                        System.out.println("Вы ввели не соответствующее значение. Повторите");
+                    }
+                }
+
+            }
+
+        return ar;
+    }
+
 }
