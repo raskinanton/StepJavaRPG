@@ -6,13 +6,15 @@ public class Specification {
     private int hpMax;
     private int coins;
     private int armor;
+    private int attack;
 
-    public Specification(String name, int hp, int hpMax, int coins, int armor) {
+    public Specification(String name, int hp, int hpMax, int coins, int armor, int attack) {
         this.name = name;
         this.hp = hp;
         this.hpMax = hpMax;
         this.coins = coins;
         this.armor = armor;
+        this.attack = attack;
     }
 
     public String getName() {
@@ -34,5 +36,7 @@ public class Specification {
     public int getArmor() {
         return armor;
     }
+
+    public int getAttack() {return  attack}
 }
 
