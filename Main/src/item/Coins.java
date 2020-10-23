@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class Coins implements Item {
+public class Coins implements item {
     private String name;
     private int quantity;
 

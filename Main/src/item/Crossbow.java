@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class Crossbow implements Item {
+public class Crossbow implements item {
     private String name;
     private int damage;
 

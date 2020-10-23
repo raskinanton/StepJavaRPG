@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Game extends Abs {
     private Scanner scn = new Scanner(System.in);
     private ArrayList<String> ar = new ArrayList<>();
-    private ArrayList<String> label = new ArrayList(Arrays.asList( "maxhp", "coins", "armor"));
+    private ArrayList<String> label = new ArrayList(Arrays.asList( "maxhp", "coins", "armor", "attack"));
     //плайер
     private Player player;
 
@@ -25,7 +25,7 @@ public class Game extends Abs {
         String name = scn.nextLine();
         ArrayList<Integer> ar = madePlayer();
 
-        player = new Player(name, ar.get(0), ar.get(0), ar.get(1), ar.get(2));
+        player = new Player(name, ar.get(0), ar.get(0), ar.get(1), ar.get(2), ar.get(3));
         //player = new Player("игрок1", 20, 20, 0, 10);
     }
 
@@ -62,6 +62,7 @@ public class Game extends Abs {
                         break;
                     case "t":
                         System.out.println(" use thing");
+
                         System.out.println("-------------");
                         break;
                 }
@@ -85,6 +86,7 @@ public class Game extends Abs {
         System.out.println("Количество hp - "+player.getSpec().getHp());
         System.out.println("Количество монет - "+player.getSpec().getCoins());
         System.out.println("Защита - "+player.getSpec().getArmor());
+        System.out.println("Атака - "+player.getSpec().getAttack());
 
     }
     private ArrayList<Integer> madePlayer(){

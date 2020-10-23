@@ -37,6 +37,6 @@ public class Specification {
         return armor;
     }
 
-    public int getAttack() {return  attack}
+    public int getAttack() {return  attack;}
 }
 

@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class HealthBarrel implements Item{
+public class HealthBarrel implements item{
     private String name;
     private int volume;
 
