@@ -1,14 +1,16 @@
 package item;
+
 import player.AbstractPlayer;
 
-public class Sword implements item {
+public class Crossbow implements Item {
     private String name;
     private int damage;
 
-    public Sword(String name, int damage) {
+    public Crossbow(String name, int damage) {
         this.name = name;
         this.damage = damage;
     }
+
 
     @Override
     public boolean apply(AbstractPlayer abstractPlayer) {

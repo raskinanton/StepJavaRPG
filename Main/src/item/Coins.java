@@ -1,13 +1,14 @@
 package item;
+
 import player.AbstractPlayer;
 
-public class Sword implements item {
+public class Coins implements Item {
     private String name;
-    private int damage;
+    private int quantity;
 
-    public Sword(String name, int damage) {
+    public Coins(String name, int quantity) {
         this.name = name;
-        this.damage = damage;
+        this.quantity = quantity;
     }
 
     @Override
@@ -23,11 +24,11 @@ public class Sword implements item {
         this.name = name;
     }
 
-    public int getDamage() {
-        return damage;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
