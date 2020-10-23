@@ -1,10 +1,12 @@
 package gameplay.menu;
 
+import player.Player;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Abs {
-
+    //проверка, что введено число
     public static boolean checkInt(String s) {
         boolean bul = true;
         try {
@@ -14,6 +16,7 @@ public class Abs {
         }
         return bul;
     }
+    // определение номера предмета из списка которым хотят воспользоваться. Переделать в возвращаемый инт
     public void itemToDo(Scanner scn, ArrayList<String> itm){
         int it = -1;
         while (true){
@@ -44,5 +47,49 @@ public class Abs {
             System.out.println("выбрали предмет - "+itm.get(it-1));
             // todo
         }
+    }
+    protected void printMenu(ArrayList<String> ar){
+        for(String s:ar){
+            System.out.println(s);
+        }
+    }
+    protected void printPlayer(Player player){
+        System.out.println("Имя игрока - "+player.getSpec().getName());
+        System.out.println("Количество hp - "+player.getSpec().getHp());
+        System.out.println("Количество монет - "+player.getSpec().getCoins());
+        System.out.println("Защита - "+player.getSpec().getArmor());
+        System.out.println("Атака - "+player.getSpec().getAttack());
+
+    }
+    protected ArrayList<Integer> madePlayer(ArrayList<String> label, Scanner scn){
+        ArrayList<Integer> ar = new ArrayList<>();
+        for(int i=0;i<label.size();i++){
+
+            while (true){
+                System.out.println("Введите "+label.get(i));
+                String param = scn.nextLine();
+                if(checkInt(param)){
+                    int par = Integer.parseInt(param);
+                    if(i==0 && par>0){
+                        ar.add(par);
+                        break;
+                    }
+                    else if(i>0 && par>-1){
+                        ar.add(par);
+                        break;
+                    }
+
+                    else{
+                        System.out.println("Вы ввели не подходящее число. Повторите");
+                    }
+                }
+                else{
+                    System.out.println("Вы ввели не соответствующее значение. Повторите");
+                }
+            }
+
+        }
+
+        return ar;
     }
 }

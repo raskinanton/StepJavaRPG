@@ -18,7 +18,7 @@ public class Main extends Abs {
                     }
                     if (Integer.parseInt(s) == 1) {
                         Game game = new Game();
-                        game.start();
+                        game.run();
                         break;
                     }
                     System.out.println("Введено не соответствующее число");
