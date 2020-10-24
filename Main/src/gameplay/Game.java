@@ -53,25 +53,64 @@ public class Game extends Abs {
                         System.out.println("move");
                         //как вариант. По расчету данных игрока создаем монстра с соответствующими параметрами
                         // Это образец
-                        Monster monster = new Monster("name", 10, 10, 10);
+                        System.out.println("параметры монстра: ");
+ //                       Monster monster = new Monster(player.getSpec().getHp()*player.getSpec().getAttack());
+ //                       printMonstr(monster);
                         System.out.println("-------------");
-                        break;
-                    case "a":
-                        // проводим атаку монстра. Рандомно кто первый бьет и каждый следующий удар, рандомно сила атаки
-                        //
-                        System.out.println("atak");
-                        //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
-                        // сработает проверка на завершение игры по проигрышу
+                        String ss = "";
+                            while (true){
+                                System.out.println(ar.get(1));
+                                System.out.println(ar.get(2));
+                                 ss = scn.nextLine();
+                                if(ss.equals("a") || ss.equals("b")){
+                                    break;
+                                }
+                                else{
+                                    System.out.println("Вы ввели не существующую команду. Повторите");
+                                }
+                            }
+                        switch (ss){
+                            case "a":
+                                // проводим атаку монстра. Рандомно кто первый бьет и каждый следующий удар, рандомно сила атаки
+                                //
+                                System.out.println("atak");
+
+                                //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
+                                // сработает проверка на завершение игры по проигрышу
 //                        if(!monster.attack(player)){
 //                            bulplay = false;
 //                        }
+ //                               if(!war(player, monster)){
+ //                                   bulplay = false;
+ //                               }
+                                System.out.println("-------------");
+                                break;
+                            case "b":
+                                // отступление, за деньги, которые надо отдать монстру
+                                System.out.println("back");
+ //                               payBack(player, monster);
+                                System.out.println("-------------");
+                                break;
+                        }
+
                         System.out.println("-------------");
                         break;
-                    case "b":
-                        // отступление, за деньги, которые надо отдать монстру
-                        System.out.println("back");
-                        System.out.println("-------------");
-                        break;
+//                    case "a":
+//                        // проводим атаку монстра. Рандомно кто первый бьет и каждый следующий удар, рандомно сила атаки
+//                        //
+//                        System.out.println("atak");
+//                        //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
+//                        // сработает проверка на завершение игры по проигрышу
+////                        if(!monster.attack(player)){
+////                            bulplay = false;
+////                        }
+//                        System.out.println("-------------");
+//                        break;
+//                    case "b":
+//                        // отступление, за деньги, которые надо отдать монстру
+//                        System.out.println("back");
+//                        System.out.println("-------------");
+//                        break;
                     case "h":
                         //Лечение
                         System.out.println("add health");

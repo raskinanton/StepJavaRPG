@@ -1,5 +1,6 @@
 package gameplay.menu;
 
+import monsters.Monster;
 import player.Player;
 
 import java.util.ArrayList;
@@ -49,14 +50,28 @@ public class Abs {
         }
     }
     protected void printMenu(ArrayList<String> ar){
-        for(String s:ar){
-            System.out.println(s);
+        for(int i = 0;i<ar.size();i++){
+            if(i==1 || i==2){
+                continue;
+            }
+            else{
+                System.out.println(ar.get(i));
+            }
+
         }
     }
     protected void printPlayer(Player player){
         System.out.println("Имя игрока - "+player.getSpec().getName());
         System.out.println("Количество hp - "+player.getSpec().getHp());
         System.out.println("Количество монет - "+player.getSpec().getCoins());
+        System.out.println("Защита - "+player.getSpec().getArmor());
+        System.out.println("Атака - "+player.getSpec().getAttack());
+
+    }
+    protected void printMonstr(Monster player){
+        System.out.println("Имя монсра - "+player.getSpec().getName());
+        System.out.println("Количество hp - "+player.getSpec().getHp());
+        System.out.println("Количество монет для отступления- "+player.getPayCoins());
         System.out.println("Защита - "+player.getSpec().getArmor());
         System.out.println("Атака - "+player.getSpec().getAttack());
 
@@ -91,5 +106,17 @@ public class Abs {
         }
 
         return ar;
+    }
+    public boolean war(Player player, Monster monster){
+        System.out.println("Игрок победил");
+        boolean bul = true;
+
+
+
+
+        return  bul;
+    }
+    public void payBack(Player player, Monster monster){
+        System.out.println("Оплата за отступление получена. Можешь идти");
     }
 }
