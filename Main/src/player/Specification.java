@@ -38,5 +38,29 @@ public class Specification {
     }
 
     public int getAttack() {return  attack;}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setHpMax(int hpMax) {
+        this.hpMax = hpMax;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
+    public void setArmor(int armor) {
+        this.armor = armor;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 }
 
