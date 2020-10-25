@@ -18,6 +18,14 @@ public class Player extends AbstractPlayer {
     public Specification getSpec() {
         return spec;
     }
+    public void printPlayer(Specification spec){
+        System.out.println("Имя игрока - "+spec.getName());
+        System.out.println("Количество hp - "+spec.getHp());
+        System.out.println("Количество монет - "+spec.getCoins());
+        System.out.println("Защита - "+spec.getArmor());
+        System.out.println("Атака - "+spec.getAttack());
+
+    }
 
     public void toUseItem(int i){
 

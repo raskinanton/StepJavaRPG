@@ -40,6 +40,7 @@ public class Game extends Abs {
             //player.print();
             //выводим статистические данны игрока собственным методом. Лучше сделать в игроке метод
             printPlayer(player);
+            player.printPlayer(player.getSpec());
             System.out.println("--------------");
             System.out.println("Выберите дальнейшую команду");
             //выводим меню возможных действий игрока
@@ -135,12 +136,14 @@ public class Game extends Abs {
                 if(!bulplay){
                     System.out.println("Выход из игры");
                     System.out.println("Игрок погиб. Вы проиграли");
-                    printPlayer(player);
+                    //printPlayer(player);
+                    player.printPlayer(player.getSpec());
                     break;
                 }
                 if(s.equals("q")){
                     System.out.println("Выход из игры");
-                    printPlayer(player);
+                    //printPlayer(player);
+                    player.printPlayer(player.getSpec());
                     break;
                 }
             }

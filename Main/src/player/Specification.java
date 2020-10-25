@@ -20,6 +20,7 @@ public class Specification {
         this.attack = attack;
     }
 
+
     public String getName() {
         return name;
     }
