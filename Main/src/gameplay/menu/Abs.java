@@ -1,6 +1,6 @@
 package gameplay.menu;
 
-import item.BossItem;
+import item.*;
 import monsters.Monster;
 import player.Player;
 
@@ -141,4 +141,35 @@ public class Abs {
     public void payBack(Player player, Monster monster){
         System.out.println("Оплата за отступление получена. Можешь идти");
     }
+//    public void initItem2() {
+//        Random randomNumberCoins = new Random();
+//        int numberCoins = randomNumberCoins.nextInt(4) + 1;
+//        for(int i=0;i<numberCoins;i++){
+//            switch (randomNumberCoins.nextInt(6)){
+//                case 0:
+//
+//                    itemsList.add(new Coins("мешок монет"+i,randomNumberCoins.nextInt(15)+3));
+//                    break;
+//                case 1:
+//                    itemsList.add(new Crossbow("арбалет"+i,randomNumberCoins.nextInt(10)+5));
+//                    break;
+//                case 2:
+//                    itemsList.add(new HauberkArmor("кольчуга"+i,randomNumberCoins.nextInt(10)+5));
+//                    break;
+//                case 3:
+//                    itemsList.add(new HealthBarrel("бутылка лекарст"+i,randomNumberCoins.nextInt(20)+3));
+//                    break;
+//                case 4:
+//                    itemsList.add(new LeatherArmor("кожанная броня"+i,randomNumberCoins.nextInt(8)+3));
+//                    break;
+//                case 5:
+//                    itemsList.add(new PlateArmor("латы"+i,randomNumberCoins.nextInt(15)+8));
+//                    break;
+//                case 6:
+//                    itemsList.add(new Sword("мечь"+i,randomNumberCoins.nextInt(8)+8));
+//                    break;
+//            }
+//        }
+//
+//    }
 }

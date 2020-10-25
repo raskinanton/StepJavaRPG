@@ -9,6 +9,8 @@ public class Coins extends BossItem implements item{
         super.setAll(quantity);
         super.setLabel("деньги");
     }
+    public Coins(){}
+
 
     @Override
     public boolean apply(AbstractPlayer abstractPlayer) {
