@@ -1,5 +1,7 @@
 package player;
 
+import item.Coins;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +26,18 @@ public class Player extends AbstractPlayer {
         System.out.println("Количество монет - "+spec.getCoins());
         System.out.println("Защита - "+spec.getArmor());
         System.out.println("Атака - "+spec.getAttack());
-
     }
 
     public void toUseItem(int i){
+        System.out.println("1 - Монеты");
+        System.out.println("2 - Здоровье");
+        System.out.println("3 - Оружие и броня");
+        System.out.println("Введите раздел предметов, который хотите выбрать: ");
+        switch (itemsList){
+            case 1:
+                System.out.println("Вы выбрали монеты");
+                item.Coins = + 15;
+        }
 
     }
 }
