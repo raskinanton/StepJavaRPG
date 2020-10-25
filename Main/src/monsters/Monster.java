@@ -16,7 +16,7 @@ public class Monster implements IntMonster {
 
 
     @Override
-    public boolean attack(Player player, Monster monster) {
+    public boolean attack(Player player) {
 
 //        Specification specPlayer = player.getSpec();
 //
