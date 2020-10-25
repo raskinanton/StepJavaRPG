@@ -26,10 +26,7 @@ public class Monster implements IntMonster {
     }
 
     @Override
-    public boolean pass(Player player, Monster monster) {
-        Specification specPlayer = player.getSpec();
-        Specification specMonster = monster.getSpec();
-        return specPlayer.getCoins() < specMonster.getCoins();
-
+    public boolean pass(Player player) {
+        return player.getSpec().getCoins() < spec.getCoins();
     }
 }
