@@ -7,8 +7,8 @@ public class Player extends AbstractPlayer {
     private Specification spec;
     private List itemsList = new ArrayList();
 
-    public Player(String name, int hp, int hpMax, int coins, int armor, int attack, List list){
-        this.spec = new Specification(name, hp, hpMax,coins,armor, attack, list);
+    public Player(String name, int hp, int hpMax, int coins, int armor, int attack){
+        this.spec = new Specification(name, hp, hpMax,coins,armor, attack);
     }
 
     public List getItemsList() {

@@ -11,14 +11,13 @@ public class Specification {
     private int armor;
     private int attack;
 
-    public Specification(String name, int hp, int hpMax, int coins, int armor, int attack, List list) {
+    public Specification(String name, int hp, int hpMax, int coins, int armor, int attack) {
         this.name = name;
         this.hp = hp;
         this.hpMax = hpMax;
         this.coins = coins;
         this.armor = armor;
         this.attack = attack;
-
     }
 
     public String getName() {
