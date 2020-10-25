@@ -11,4 +11,5 @@ public class BossItem {
     public int getAll() {
         return all;
     }
+
 }
