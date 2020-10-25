@@ -38,35 +38,29 @@ public class Player extends AbstractPlayer {
         BossItem itm = itemsList.get(i);
 
 
-       switch (itm.getName()){
+       switch (itm.getLabel()){
             case "деньги":
                spec.setCoins(spec.getCoins() + itm.getAll());
-               System.out.println("вам были добавлены монеты");
+                System.out.println("Предмет - "+itm.getName());
+               System.out.println("вам были добавлены монеты на "+itm.getAll());
                break;
-            case "арбалет":
+            case "атака":
                 spec.setAttack(spec.getAttack() + itm.getAll());
-                System.out.println("Ваша атака была увеличена на 20 единиц");
-                break;
-            case "меч":
-                spec.setAttack(spec.getAttack() + itm.getAll());
-                System.out.println("Ваша атака была увеличена на 30 единиц");
+                System.out.println("Предмет - "+itm.getName());
+                System.out.println("Ваша атака была увеличена на "+itm.getAll());
                 break;
             case "здоровье":
                spec.setHp(spec.getHp() + itm.getAll());
-               System.out.println("Ваше здоровье восстановлено на 20 единиц");
+                System.out.println("Предмет - "+itm.getName());
+               System.out.println("Ваше здоровье восстановлено на "+itm.getAll());
                break;
             case "броня":
-                System.out.println("Выберите тип который хотите: Пластинчатая|| Кожанная");
-                case "пластинчатая":
-                    spec.setArmor(spec.getArmor() + itm.getAll());
-                    System.out.println("Ваша защита повышена на 30 единиц");
-                    break;
-                case "кожанная":
-                    spec.setArmor(spec.getArmor() + itm.getAll());
-                    System.out.println("Ваша защита была повышена на 30 единиц");
-                    break;
+                spec.setArmor(spec.getArmor() + itm.getAll());
+                System.out.println("Предмет - "+itm.getName());
+                System.out.println("Ваша защита повышена на "+itm.getAll());
+                break;
+
         }
-        System.out.println("предмет номер "+i);
-        System.out.println(itemsList.get(i));
+
     }
 }
