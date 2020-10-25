@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class LeatherArmor implements item {
+public class LeatherArmor extends BossItem implements item {
     private String name;
     private int protection;
 

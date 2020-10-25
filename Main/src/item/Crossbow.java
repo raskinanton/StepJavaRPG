@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class Crossbow implements item {
+public class Crossbow extends BossItem implements item {
     private String name;
     private int damage;
 

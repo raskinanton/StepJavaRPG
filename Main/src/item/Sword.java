@@ -1,7 +1,7 @@
 package item;
 import player.AbstractPlayer;
 
-public class Sword implements item {
+public class Sword extends BossItem implements item {
     private String name;
     private int damage;
 

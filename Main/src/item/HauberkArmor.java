@@ -2,7 +2,7 @@ package item;
 
 import player.AbstractPlayer;
 
-public class HauberkArmor implements item {
+public class HauberkArmor extends BossItem implements item {
     private String name;
     private int protection;
 
