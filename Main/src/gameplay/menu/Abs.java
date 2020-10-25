@@ -1,9 +1,11 @@
 package gameplay.menu;
 
+import item.BossItem;
 import monsters.Monster;
 import player.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,13 +21,13 @@ public class Abs {
         return bul;
     }
     // определение номера предмета из списка которым хотят воспользоваться. Переделать в возвращаемый инт
-    public void itemToDo(Scanner scn, ArrayList<String> itm){
+    public int itemToDo(Scanner scn, List<BossItem> itm){
         int it = -1;
         while (true){
             System.out.println("Выберите предмет,введя соответствующую цифру");
-            //player.getListItem().size
-            for(int i = 0;i<itm.size();i++){
-                System.out.println((i+1)+". "+itm.get(i));
+
+            for(int i=0;i<itm.size();i++){
+                System.out.println((i+1)+". "+itm.get(i).getName());
             }
             System.out.println("Если передумали, введите q");
             String itms = scn.nextLine();
@@ -46,10 +48,13 @@ public class Abs {
             }
         }
         if(it!=-1){
-            System.out.println("выбрали предмет - "+itm.get(it-1));
-            // todo
+            System.out.println("выбрали предмет - "+itm.get(it-1).getName());
+
         }
+        return it-1;
     }
+
+
     protected void printMenu(ArrayList<String> ar){
         for(int i = 0;i<ar.size();i++){
             if(i==1 || i==2){

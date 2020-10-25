@@ -1,16 +1,22 @@
 package player;
 
+import item.*;
+
 import item.Coins;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player extends AbstractPlayer {
+public class Player<T> extends AbstractPlayer {
     private Specification spec;
-    private List itemsList = new ArrayList();
+    private List<BossItem> itemsList = new ArrayList();
 
     public Player(String name, int hp, int hpMax, int coins, int armor, int attack){
         this.spec = new Specification(name, hp, hpMax,coins,armor, attack);
+        itemsList.add(new Coins("деньги", 10));
+        itemsList.add(new Crossbow("крутой арбалет", 20));
+        itemsList.add( new HealthBarrel("здоровье", 20));
+        itemsList.add( new PlateArmor("Кожанная броня", 30));
     }
 
     public List getItemsList() {
@@ -29,15 +35,15 @@ public class Player extends AbstractPlayer {
     }
 
     public void toUseItem(int i){
-        System.out.println("1 - Монеты");
-        System.out.println("2 - Здоровье");
-        System.out.println("3 - Оружие и броня");
-        System.out.println("Введите раздел предметов, который хотите выбрать: ");
-        switch (itemsList){
-            case 1:
-                System.out.println("Вы выбрали монеты");
-                item.Coins = + 15;
-        }
+        BossItem itm = itemsList.get(i);
 
+
+//       // switch (itemsList){
+//            case 1:
+//                System.out.println("Вы выбрали монеты");
+//                //item.Coins = + 15;
+//        }
+//        System.out.println("предмет номер "+i);
+//        System.out.println(itemsList.get(i));
     }
 }

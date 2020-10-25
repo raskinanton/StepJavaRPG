@@ -39,7 +39,7 @@ public class Game extends Abs {
             System.out.println("параметры игрока: ");
             //player.print();
             //выводим статистические данны игрока собственным методом. Лучше сделать в игроке метод
-            printPlayer(player);
+            //printPlayer(player);
             player.printPlayer(player.getSpec());
             System.out.println("--------------");
             System.out.println("Выберите дальнейшую команду");
@@ -121,14 +121,11 @@ public class Game extends Abs {
                         System.out.println("-------------");
                         break;
                     case "t":
-                        //использование подобраных предметов в случае победы. Пересекается с монетами и лечением.
-                        // Надо уточнить
                         System.out.println(" use thing");
-                        //int numberItem = itemToDo(scn, player.getItems);
-                        //player.itemDo(number);
-                        //в методе по номеру item из списка, по его имени кейсами определяется что делать(увеличить
-                        // монет, защиту, и т.д.)
-                        itemToDo(scn,itm);
+                        int numberItem = itemToDo(scn, player.getItemsList());
+                        if(numberItem!=-1){
+                            player.toUseItem(numberItem);
+                        }
 
                         System.out.println("-------------");
                         break;
