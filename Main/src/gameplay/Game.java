@@ -53,9 +53,10 @@ public class Game extends Abs {
                     //ход, после которго появится монстр. Делаем инициализацию монстра
                     case "m":
                         System.out.println("move");
-                        //как вариант. По расчету данных игрока создаем монстра с соответствующими параметрами
-                        // Это образец
+
                         System.out.println("параметры монстра: ");
+                        Monster monster = new Monster(player);
+                        monster.printMonster();
                         //Monster mon = monster.madeMonster(0);
 //                        Monster monster = new Monster(player.getSpec().getHp()*player.getSpec().getAttack());
 //                        printMonstr(monster);
@@ -81,12 +82,14 @@ public class Game extends Abs {
 
                                 //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
                                 // сработает проверка на завершение игры по проигрышу
-//                        if(!monster.attack(player)){
-//                            bulplay = false;
-//                        }
-//                                if(!war(player, monster)){
-//                                    bulplay = false;
-//                                }
+                                if(!monster.attack(player)){
+                                    bulplay = false;
+                                }
+                                else{
+                                    System.out.println("Игрок выиграл бой");
+                                }
+
+
                                 System.out.println("-------------");
                                 break;
                             case "b":
@@ -99,22 +102,7 @@ public class Game extends Abs {
 
                         System.out.println("-------------");
                         break;
-//                    case "a":
-//                        // проводим атаку монстра. Рандомно кто первый бьет и каждый следующий удар, рандомно сила атаки
-//                        //
-//                        System.out.println("atak");
-//                        //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
-//                        // сработает проверка на завершение игры по проигрышу
-////                        if(!monster.attack(player)){
-////                            bulplay = false;
-////                        }
-//                        System.out.println("-------------");
-//                        break;
-//                    case "b":
-//                        // отступление, за деньги, которые надо отдать монстру
-//                        System.out.println("back");
-//                        System.out.println("-------------");
-//                        break;
+
                     case "h":
                         //Лечение
                         System.out.println("add health");
@@ -123,7 +111,7 @@ public class Game extends Abs {
                     case "t":
                         System.out.println(" use thing");
                         int numberItem = itemToDo(scn, player.getItemsList());
-                        if(numberItem!=-1){
+                        if(numberItem>-1){
                             player.toUseItem(numberItem);
                         }
 

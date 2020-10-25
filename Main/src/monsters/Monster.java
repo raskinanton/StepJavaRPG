@@ -18,15 +18,22 @@ public class Monster implements IntMonster {
     public Specification getSpec() {
         return spec;
     }
-
     public Monster(){
 
     }
 
-    public void printMonster(Specification spec) {
+    public Monster(Player player){
+        Random random = new Random();
+        int n = random.nextInt(30);
+        int hp = random.nextInt(player.getSpec().getHp())+player.getSpec().getHp()/2;
+        int armor = random.nextInt(player.getSpec().getArmor())+player.getSpec().getHp()/2;
+        int attack = random.nextInt(player.getSpec().getAttack())+player.getSpec().getAttack()/2;
+        this.spec = new Specification("Монстр"+n, hp, hp, 0, armor, attack);
+    }
+
+    public void printMonster() {
         System.out.println("Монстр - " + spec.getName());
         System.out.println("Количество hp - " + spec.getHp());
-        System.out.println("Количество монет - " + spec.getCoins());
         System.out.println("Защита - " + spec.getArmor());
         System.out.println("Атака - " + spec.getAttack());
     }
@@ -64,7 +71,7 @@ public class Monster implements IntMonster {
                     itemsList.add(new HauberkArmor("кольчуга"+i,randomNumberCoins.nextInt(10)+5));
                     break;
                 case 3:
-                    itemsList.add(new HealthBarrel("бутылка лекарст"+i,randomNumberCoins.nextInt(20)+3));
+                    itemsList.add(new HealthBarrel("бутылка лекарств"+i,randomNumberCoins.nextInt(20)+3));
                     break;
                 case 4:
                     itemsList.add(new LeatherArmor("кожанная броня"+i,randomNumberCoins.nextInt(8)+3));
@@ -83,12 +90,49 @@ public class Monster implements IntMonster {
 
     @Override
     public boolean attack(Player player) {
+        boolean bul = true;
+        Random rnd = new Random();
+        int hpPlayer = player.getSpec().getHp();
+        int hpMonster = getSpec().getHp();
 
-//        Specification specPlayer = player.getSpec();
-//
-//        if (specPlayer.getCoins())
 
-        return true;
+        while (hpPlayer>0 && hpMonster>0){
+            int first = rnd.nextInt(2);
+            if(first==0){
+                int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble());
+                if((atak - getSpec().getArmor())>0){
+                    hpMonster= hpMonster-(atak - getSpec().getArmor());
+                }
+
+                System.out.println("бьет игрок на "+atak);
+                System.out.println("hp монстра - "+hpMonster);
+            }
+            else{
+                System.out.println("бьет монстр");
+                int atak = (int)(getSpec().getAttack()* rnd.nextDouble());
+                if((atak - player.getSpec().getArmor())>0){
+                    hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
+                }
+
+                System.out.println("бьет монстр на "+atak);
+                System.out.println("hp игрока - "+hpPlayer);
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if(hpMonster>0){
+            bul=false;
+        }
+        else{
+            player.getSpec().setHp(hpPlayer);
+            initItem2();
+            player.getItemsList().addAll(itemsList);
+        }
+
+        return bul;
     }
 
     @Override
