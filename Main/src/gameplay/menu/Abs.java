@@ -20,91 +20,88 @@ public class Abs {
         }
         return bul;
     }
+
     // определение номера предмета из списка которым хотят воспользоваться. Переделать в возвращаемый инт
-    public int itemToDo(Scanner scn, List<BossItem> itm){
+    public int itemToDo(Scanner scn, List<BossItem> itm) {
         int it = -1;
-        while (true){
+        while (true) {
             System.out.println("Выберите предмет,введя соответствующую цифру");
 
-            for(int i=0;i<itm.size();i++){
-                System.out.println((i+1)+". "+itm.get(i).getName());
+            for (int i = 0; i < itm.size(); i++) {
+                System.out.println((i + 1) + ". " + itm.get(i).getName());
             }
             System.out.println("Если передумали, введите q");
             String itms = scn.nextLine();
-            if(itms.equals("q")){
+            if (itms.equals("q")) {
                 break;
             }
-            if(checkInt(itms)){
+            if (checkInt(itms)) {
                 it = Integer.parseInt(itms);
-                if(it>0 && it<=itm.size()){
+                if (it > 0 && it <= itm.size()) {
                     break;
-                }
-                else{
+                } else {
                     System.out.println("Введена команда не соответствующая меню");
                 }
-            }
-            else{
+            } else {
                 System.out.println("Введена команда не соответствующая меню");
             }
         }
-        if(it!=-1){
-            System.out.println("выбрали предмет - "+itm.get(it-1).getName());
+        if (it != -1) {
+            System.out.println("выбрали предмет - " + itm.get(it - 1).getName());
 
         }
-        return it-1;
+        return it - 1;
     }
 
 
-    protected void printMenu(ArrayList<String> ar){
-        for(int i = 0;i<ar.size();i++){
-            if(i==1 || i==2){
+    protected void printMenu(ArrayList<String> ar) {
+        for (int i = 0; i < ar.size(); i++) {
+            if (i == 1 || i == 2) {
                 continue;
-            }
-            else{
+            } else {
                 System.out.println(ar.get(i));
             }
 
         }
     }
-    protected void printPlayer(Player player){
-        System.out.println("Имя игрока - "+player.getSpec().getName());
-        System.out.println("Количество hp - "+player.getSpec().getHp());
-        System.out.println("Количество монет - "+player.getSpec().getCoins());
-        System.out.println("Защита - "+player.getSpec().getArmor());
-        System.out.println("Атака - "+player.getSpec().getAttack());
+
+    protected void printPlayer(Player player) {
+        System.out.println("Имя игрока - " + player.getSpec().getName());
+        System.out.println("Количество hp - " + player.getSpec().getHp());
+        System.out.println("Количество монет - " + player.getSpec().getCoins());
+        System.out.println("Защита - " + player.getSpec().getArmor());
+        System.out.println("Атака - " + player.getSpec().getAttack());
 
     }
-    protected void printMonster(Monster monster){
-        System.out.println("Имя монсра - "+monster.getSpec().getName());
-        System.out.println("Количество hp - "+monster.getSpec().getHp());
-        System.out.println("Количество монет для отступления- "+monster.getSpec().getCoins());
-        System.out.println("Защита - "+monster.getSpec().getArmor());
-        System.out.println("Атака - "+monster.getSpec().getAttack());
+
+    protected void printMonster(Monster monster) {
+        System.out.println("Имя монсра - " + monster.getSpec().getName());
+        System.out.println("Количество hp - " + monster.getSpec().getHp());
+        System.out.println("Количество монет для отступления- " + monster.getSpec().getCoins());
+        System.out.println("Защита - " + monster.getSpec().getArmor());
+        System.out.println("Атака - " + monster.getSpec().getAttack());
 
     }
-    protected ArrayList<Integer> madePlayer(ArrayList<String> label, Scanner scn){
+
+    protected ArrayList<Integer> madePlayer(ArrayList<String> label, Scanner scn) {
         ArrayList<Integer> ar = new ArrayList<>();
-        for(int i=0;i<label.size();i++){
+        for (int i = 0; i < label.size(); i++) {
 
-            while (true){
-                System.out.println("Введите "+label.get(i));
+            while (true) {
+                System.out.println("Введите " + label.get(i));
                 String param = scn.nextLine();
-                if(checkInt(param)){
+                if (checkInt(param)) {
                     int par = Integer.parseInt(param);
-                    if(i==0 && par>0){
+                    if (i == 0 && par > 0) {
                         ar.add(par);
                         break;
-                    }
-                    else if(i>0 && par>-1){
+                    } else if (i > 0 && par > -1) {
                         ar.add(par);
                         break;
-                    }
-
-                    else{
+                    } else {
                         System.out.println("Вы ввели не подходящее число. Повторите");
                     }
-                }
-                else{
+                } else {
                     System.out.println("Вы ввели не соответствующее значение. Повторите");
                 }
             }
@@ -113,31 +110,30 @@ public class Abs {
 
         return ar;
     }
-    public boolean war(Player player, Monster monster){
+
+    public boolean war(Player player, Monster monster) {
         Random rnd = new Random();
         System.out.println("Игрок победил");
         boolean bul = true;
-            for(int i=0;i<10;i++){
-                //System.out.println(rnd.nextDouble());
-                int first = rnd.nextInt(2);
-                System.out.println(first);
-                if(first==0){
-                    System.out.println("бьет игрок");
-                    int rez = monster.getSpec().getHp()-(int)(player.getSpec().getAttack()* rnd.nextDouble());
-                    monster.getSpec().setHp(rez);
-                    System.out.println("hp монстра - "+monster.getSpec().getHp());
-                }
-                else{
-                    System.out.println("бьет монстр");
-                }
+        for (int i = 0; i < 10; i++) {
+            //System.out.println(rnd.nextDouble());
+            int first = rnd.nextInt(2);
+            System.out.println(first);
+            if (first == 0) {
+                System.out.println("бьет игрок");
+                int rez = monster.getSpec().getHp() - (int) (player.getSpec().getAttack() * rnd.nextDouble());
+                monster.getSpec().setHp(rez);
+                System.out.println("hp монстра - " + monster.getSpec().getHp());
+            } else {
+                System.out.println("бьет монстр");
             }
+        }
 
 
-
-
-        return  bul;
+        return bul;
     }
-    public void payBack(Player player, Monster monster){
+
+    public void payBack(Player player, Monster monster) {
         System.out.println("Оплата за отступление получена. Можешь идти");
     }
 }

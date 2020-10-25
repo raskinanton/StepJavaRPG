@@ -6,20 +6,20 @@ import player.Specification;
 public class Monster implements IntMonster {
     private Specification spec;
 
-    public Monster(String name, int hp, int hpMax, int coins, int armor, int attack){
-        this.spec = new Specification(name, hp, hpMax,coins,armor, attack);
+    public Monster(String name, int hp, int hpMax, int coins, int armor, int attack) {
+        this.spec = new Specification(name, hp, hpMax, coins, armor, attack);
     }
 
     public Specification getSpec() {
         return spec;
     }
 
-    public void printMonster(Specification spec){
-        System.out.println("Монстр - "+spec.getName());
-        System.out.println("Количество hp - "+spec.getHp());
-        System.out.println("Количество монет - "+spec.getCoins());
-        System.out.println("Защита - "+spec.getArmor());
-        System.out.println("Атака - "+spec.getAttack());
+    public void printMonster(Specification spec) {
+        System.out.println("Монстр - " + spec.getName());
+        System.out.println("Количество hp - " + spec.getHp());
+        System.out.println("Количество монет - " + spec.getCoins());
+        System.out.println("Защита - " + spec.getArmor());
+        System.out.println("Атака - " + spec.getAttack());
     }
 
     @Override
