@@ -1,6 +1,10 @@
 package player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Specification {
+    private List list = new ArrayList();
     private String name;
     private int hp;
     private int hpMax;
@@ -8,13 +12,14 @@ public class Specification {
     private int armor;
     private int attack;
 
-    public Specification(String name, int hp, int hpMax, int coins, int armor, int attack) {
+    public Specification(String name, int hp, int hpMax, int coins, int armor, int attack, List list) {
         this.name = name;
         this.hp = hp;
         this.hpMax = hpMax;
         this.coins = coins;
         this.armor = armor;
         this.attack = attack;
+        this.list = list;
     }
 
     public String getName() {
@@ -38,6 +43,10 @@ public class Specification {
     }
 
     public int getAttack() {return  attack;}
+
+    public List getList() {
+        return list;
+    }
 
     public void setName(String name) {
         this.name = name;
