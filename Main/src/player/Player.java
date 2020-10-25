@@ -39,8 +39,10 @@ public class Player extends AbstractPlayer {
 
 
        switch (itm.getName()){
-            case "wwwwwww":
-                System.out.println("Вы выбрали монеты");
+            case "арбалет":
+                spec.setAttack(spec.getAttack()+itm.getAll());
+                //
+                System.out.println("атака увеличинам");
                 //item.Coins = + 15;
         }
         System.out.println("предмет номер "+i);
