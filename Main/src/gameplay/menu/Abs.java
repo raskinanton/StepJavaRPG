@@ -48,7 +48,8 @@ public class Abs {
             }
         }
         if(it!=-1){
-            System.out.println("выбрали предмет - "+itm.get(it-1).getName());
+            System.out.println("выбрали предмет - №"+(it-1));
+            System.out.println("-----------------");
 
         }
         return it-1;

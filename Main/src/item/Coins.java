@@ -3,12 +3,11 @@ package item;
 import player.AbstractPlayer;
 
 public class Coins extends BossItem implements item{
-    private String name;
-    private int quantity;
 
     public Coins(String name, int quantity) {
-        this.name = name;
-        this.quantity = quantity;
+        super.setName(name);
+        super.setAll(quantity);
+        super.setLabel("деньги");
     }
 
     @Override
@@ -16,19 +15,5 @@ public class Coins extends BossItem implements item{
         return false;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }

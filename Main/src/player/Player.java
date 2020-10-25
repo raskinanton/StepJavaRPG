@@ -7,7 +7,7 @@ import item.Coins;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player<T> extends AbstractPlayer {
+public class Player extends AbstractPlayer {
     private Specification spec;
     private List<BossItem> itemsList = new ArrayList();
 
@@ -38,12 +38,29 @@ public class Player<T> extends AbstractPlayer {
         BossItem itm = itemsList.get(i);
 
 
-//       // switch (itemsList){
-//            case 1:
-//                System.out.println("Вы выбрали монеты");
-//                //item.Coins = + 15;
-//        }
-//        System.out.println("предмет номер "+i);
-//        System.out.println(itemsList.get(i));
+       switch (itm.getLabel()){
+            case "деньги":
+               spec.setCoins(spec.getCoins() + itm.getAll());
+                System.out.println("Предмет - "+itm.getName());
+               System.out.println("вам были добавлены монеты на "+itm.getAll());
+               break;
+            case "атака":
+                spec.setAttack(spec.getAttack() + itm.getAll());
+                System.out.println("Предмет - "+itm.getName());
+                System.out.println("Ваша атака была увеличена на "+itm.getAll());
+                break;
+            case "здоровье":
+               spec.setHp(spec.getHp() + itm.getAll());
+                System.out.println("Предмет - "+itm.getName());
+               System.out.println("Ваше здоровье восстановлено на "+itm.getAll());
+               break;
+            case "броня":
+                spec.setArmor(spec.getArmor() + itm.getAll());
+                System.out.println("Предмет - "+itm.getName());
+                System.out.println("Ваша защита повышена на "+itm.getAll());
+                break;
+
+        }
+
     }
 }
