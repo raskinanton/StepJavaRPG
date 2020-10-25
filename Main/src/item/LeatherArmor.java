@@ -8,7 +8,7 @@ public class LeatherArmor extends BossItem implements item {
     public LeatherArmor(String name, int protection) {
         super.setName(name);
         super.setAll(protection);
-        super.setLabel("броня");
+        super.setLabel("кожа");
     }
 
 

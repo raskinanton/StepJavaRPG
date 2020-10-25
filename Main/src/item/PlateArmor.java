@@ -8,7 +8,7 @@ public class PlateArmor extends BossItem implements item{
     public PlateArmor(String name, int protection) {
         super.setName(name);
         super.setAll(protection);
-        super.setLabel("броня");
+        super.setLabel("латы");
     }
 
     @Override

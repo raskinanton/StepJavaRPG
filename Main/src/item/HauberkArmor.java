@@ -8,7 +8,7 @@ public class HauberkArmor extends BossItem implements item {
 
         super.setName(name);
         super.setAll(protection);
-        super.setLabel("броня");
+        super.setLabel("кольчуга");
     }
 
 

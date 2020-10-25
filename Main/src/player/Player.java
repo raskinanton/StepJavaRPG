@@ -44,23 +44,39 @@ public class Player extends AbstractPlayer {
                 System.out.println("Предмет - "+itm.getName());
                System.out.println("вам были добавлены монеты на "+itm.getAll());
                break;
-            case "атака":
+            case "мечь":
                 spec.setAttack(spec.getAttack() + itm.getAll());
                 System.out.println("Предмет - "+itm.getName());
                 System.out.println("Ваша атака была увеличена на "+itm.getAll());
                 break;
+           case "арбалет":
+               spec.setAttack(spec.getAttack() + itm.getAll());
+               System.out.println("Предмет - "+itm.getName());
+               System.out.println("Ваша атака была увеличена на "+itm.getAll());
+               break;
             case "здоровье":
                spec.setHp(spec.getHp() + itm.getAll());
                 System.out.println("Предмет - "+itm.getName());
                System.out.println("Ваше здоровье восстановлено на "+itm.getAll());
                break;
-            case "броня":
+            case "кожа":
                 spec.setArmor(spec.getArmor() + itm.getAll());
                 System.out.println("Предмет - "+itm.getName());
                 System.out.println("Ваша защита повышена на "+itm.getAll());
                 break;
+           case "кольчуга":
+               spec.setArmor(spec.getArmor() + itm.getAll());
+               System.out.println("Предмет - "+itm.getName());
+               System.out.println("Ваша защита повышена на "+itm.getAll());
+               break;
+           case "латы":
+               spec.setArmor(spec.getArmor() + itm.getAll());
+               System.out.println("Предмет - "+itm.getName());
+               System.out.println("Ваша защита повышена на "+itm.getAll());
+               break;
 
         }
+        itemsList.remove(i);
 
     }
 }

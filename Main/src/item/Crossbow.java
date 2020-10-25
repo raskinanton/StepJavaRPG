@@ -7,7 +7,7 @@ public class Crossbow extends BossItem implements item {
     public Crossbow(String name, int damage) {
         super.setName(name);
         super.setAll(damage);
-        super.setLabel("атака");
+        super.setLabel("арбалет");
     }
 
 
