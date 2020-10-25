@@ -14,9 +14,16 @@ public class Monster implements IntMonster {
         return spec;
     }
 
+    public void printMonster(Specification spec){
+        System.out.println("Монстр - "+spec.getName());
+        System.out.println("Количество hp - "+spec.getHp());
+        System.out.println("Количество монет - "+spec.getCoins());
+        System.out.println("Защита - "+spec.getArmor());
+        System.out.println("Атака - "+spec.getAttack());
+    }
 
     @Override
-    public boolean attack(Player player, Monster monster) {
+    public boolean attack(Player player) {
 
 //        Specification specPlayer = player.getSpec();
 //
@@ -26,10 +33,7 @@ public class Monster implements IntMonster {
     }
 
     @Override
-    public boolean pass(Player player, Monster monster) {
-        Specification specPlayer = player.getSpec();
-        Specification specMonster = monster.getSpec();
-        return specPlayer.getCoins() < specMonster.getCoins();
-
+    public boolean pass(Player player) {
+        return player.getSpec().getCoins() < spec.getCoins();
     }
 }
