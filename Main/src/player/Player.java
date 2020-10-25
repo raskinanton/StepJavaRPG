@@ -10,4 +10,8 @@ public class Player extends AbstractPlayer {
     public Specification getSpec() {
         return spec;
     }
+
+    public void toUseItem(int i){
+
+    }
 }
