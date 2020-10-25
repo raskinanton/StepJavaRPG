@@ -14,6 +14,13 @@ public class Monster implements IntMonster {
         return spec;
     }
 
+    public void printMonster(Specification spec){
+        System.out.println("Монстр - "+spec.getName());
+        System.out.println("Количество hp - "+spec.getHp());
+        System.out.println("Количество монет - "+spec.getCoins());
+        System.out.println("Защита - "+spec.getArmor());
+        System.out.println("Атака - "+spec.getAttack());
+    }
 
     @Override
     public boolean attack(Player player) {
