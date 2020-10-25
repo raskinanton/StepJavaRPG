@@ -7,7 +7,7 @@ import item.Coins;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player<T> extends AbstractPlayer {
+public class Player extends AbstractPlayer {
     private Specification spec;
     private List<BossItem> itemsList = new ArrayList();
 
@@ -38,12 +38,12 @@ public class Player<T> extends AbstractPlayer {
         BossItem itm = itemsList.get(i);
 
 
-//       // switch (itemsList){
-//            case 1:
-//                System.out.println("Вы выбрали монеты");
-//                //item.Coins = + 15;
-//        }
-//        System.out.println("предмет номер "+i);
-//        System.out.println(itemsList.get(i));
+       switch (itm.getName()){
+            case "wwwwwww":
+                System.out.println("Вы выбрали монеты");
+                //item.Coins = + 15;
+        }
+        System.out.println("предмет номер "+i);
+        System.out.println(itemsList.get(i));
     }
 }
