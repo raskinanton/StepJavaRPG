@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Monster implements IntMonster {
     private Specification spec;
-//    private List<? super BossItem> itemsList = new ArrayList<>();
+    private List<BossItem> itemsList = new ArrayList<>();
 
     public Monster(String name, int hp, int hpMax, int coins, int armor, int attack) {
         this.spec = new Specification(name, hp, hpMax, coins, armor, attack);
@@ -16,6 +16,10 @@ public class Monster implements IntMonster {
 
     public Specification getSpec() {
         return spec;
+    }
+
+    public Monster(){
+
     }
 
     public void printMonster(Specification spec) {
@@ -28,7 +32,7 @@ public class Monster implements IntMonster {
 
     public void initItem() {
 
-        Map<Integer, ? super BossItem> mapItem = new HashMap<>();
+        Map<Integer, BossItem> mapItem = new HashMap<>();
         mapItem.put(1, new Coins("деньги", 10));
         mapItem.put(2, new Crossbow("крутой арбалет", 20));
         mapItem.put(3, new HealthBarrel("здоровье", 20));
@@ -40,7 +44,7 @@ public class Monster implements IntMonster {
         Random randomNumberCoins = new Random();
         int numberCoins = randomNumberCoins.nextInt(7) + 1;
 
-//        itemsList.add(mapItem.get(1));
+        itemsList.add(mapItem.get(1));
 
     }
 
