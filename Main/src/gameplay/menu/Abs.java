@@ -68,12 +68,12 @@ public class Abs {
         System.out.println("Атака - "+player.getSpec().getAttack());
 
     }
-    protected void printMonstr(Monster player){
-        System.out.println("Имя монсра - "+player.getSpec().getName());
-        System.out.println("Количество hp - "+player.getSpec().getHp());
-        System.out.println("Количество монет для отступления- "+player.getPayCoins());
-        System.out.println("Защита - "+player.getSpec().getArmor());
-        System.out.println("Атака - "+player.getSpec().getAttack());
+    protected void printMonster(Monster monster){
+        System.out.println("Имя монсра - "+monster.getSpec().getName());
+        System.out.println("Количество hp - "+monster.getSpec().getHp());
+        System.out.println("Количество монет для отступления- "+monster.getSpec().getCoins());
+        System.out.println("Защита - "+monster.getSpec().getArmor());
+        System.out.println("Атака - "+monster.getSpec().getAttack());
 
     }
     protected ArrayList<Integer> madePlayer(ArrayList<String> label, Scanner scn){
