@@ -1,6 +1,6 @@
 package monsters;
 
-public class HardMonster{
+public class HardMonster {
 
 
 

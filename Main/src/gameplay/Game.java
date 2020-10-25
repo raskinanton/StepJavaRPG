@@ -16,6 +16,7 @@ public class Game extends Abs {
             "мечь"));
     //плайер
     private Player player;
+    //private Monster monster = new Monster();
     private boolean bulplay = true;
 
     public Game(){
@@ -54,8 +55,10 @@ public class Game extends Abs {
                         //как вариант. По расчету данных игрока создаем монстра с соответствующими параметрами
                         // Это образец
                         System.out.println("параметры монстра: ");
- //                       Monster monster = new Monster(player.getSpec().getHp()*player.getSpec().getAttack());
- //                       printMonstr(monster);
+                        //Monster mon = monster.madeMonster(0);
+//                        Monster monster = new Monster(player.getSpec().getHp()*player.getSpec().getAttack());
+//                        printMonstr(monster);
+                        //printMonstr(mon);
                         System.out.println("-------------");
                         String ss = "";
                             while (true){
@@ -80,15 +83,15 @@ public class Game extends Abs {
 //                        if(!monster.attack(player)){
 //                            bulplay = false;
 //                        }
- //                               if(!war(player, monster)){
- //                                   bulplay = false;
- //                               }
+//                                if(!war(player, monster)){
+//                                    bulplay = false;
+//                                }
                                 System.out.println("-------------");
                                 break;
                             case "b":
                                 // отступление, за деньги, которые надо отдать монстру
                                 System.out.println("back");
- //                               payBack(player, monster);
+//                                payBack(player, monster);
                                 System.out.println("-------------");
                                 break;
                         }

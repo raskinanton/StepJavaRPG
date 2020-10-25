@@ -37,8 +37,6 @@ public class Specification {
         return armor;
     }
 
-    public int getAttack() {return  attack;}
-
     public void setName(String name) {
         this.name = name;
     }
@@ -62,5 +60,9 @@ public class Specification {
     public void setAttack(int attack) {
         this.attack = attack;
     }
+
+    public int getAttack() {return  attack;}
+
+
 }
 

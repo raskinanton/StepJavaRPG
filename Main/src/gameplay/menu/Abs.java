@@ -4,6 +4,7 @@ import monsters.Monster;
 import player.Player;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Abs {
@@ -108,8 +109,23 @@ public class Abs {
         return ar;
     }
     public boolean war(Player player, Monster monster){
+        Random rnd = new Random();
         System.out.println("Игрок победил");
         boolean bul = true;
+            for(int i=0;i<10;i++){
+                //System.out.println(rnd.nextDouble());
+                int first = rnd.nextInt(2);
+                System.out.println(first);
+                if(first==0){
+                    System.out.println("бьет игрок");
+                    int rez = monster.getSpec().getHp()-(int)(player.getSpec().getAttack()* rnd.nextDouble());
+                    monster.getSpec().setHp(rez);
+                    System.out.println("hp монстра - "+monster.getSpec().getHp());
+                }
+                else{
+                    System.out.println("бьет монстр");
+                }
+            }
 
 
 
