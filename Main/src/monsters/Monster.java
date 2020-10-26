@@ -27,8 +27,9 @@ public class Monster implements IntMonster {
         int n = random.nextInt(30);
         int hp = random.nextInt(player.getSpec().getHp())+player.getSpec().getHp()/2;
         int armor = random.nextInt(player.getSpec().getArmor()/2+1)+player.getSpec().getArmor()/2;
-        int attack = random.nextInt(player.getSpec().getAttack()/2)+player.getSpec().getAttack()/2;
-        this.spec = new Specification("Монстр"+n, hp, hp, 0, armor, attack);
+        int attack = random.nextInt(player.getSpec().getAttack()/2+1)+player.getSpec().getAttack()/2;
+        int coins = random.nextInt(player.getSpec().getCoins()/2+1)+player.getSpec().getCoins()/2+2;
+        this.spec = new Specification("Монстр"+n, hp, hp, coins, armor, attack);
     }
 
     public void printMonster() {
@@ -36,6 +37,7 @@ public class Monster implements IntMonster {
         System.out.println("Количество hp - " + spec.getHp());
         System.out.println("Защита - " + spec.getArmor());
         System.out.println("Атака - " + spec.getAttack());
+        System.out.println("Количество монет для отступления - "+spec.getCoins());
     }
 
     public void initItem() {
@@ -145,6 +147,20 @@ public class Monster implements IntMonster {
     }
 
     public Monster choiseMonster(Player player){
+
         return null;
+    }
+    public boolean pass2(Player player){
+        boolean bul = true;
+        if(player.getSpec().getCoins()<spec.getCoins()){
+            System.out.println("У тебя нехватка денег. Значит умри в бою");
+            System.out.println("----------------------");
+            bul = false;
+        }
+        else{
+            player.getSpec().setCoins(player.getSpec().getCoins()-spec.getCoins());
+            System.out.println("Ты заплатил. "+spec.getCoins()+" монет. Можешь идти");
+        }
+        return bul;
     }
 }

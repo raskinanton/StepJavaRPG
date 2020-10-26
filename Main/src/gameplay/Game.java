@@ -91,7 +91,17 @@ public class Game extends Abs {
                             case "b":
                                 // отступление, за деньги, которые надо отдать монстру
                                 System.out.println("back");
-//                                payBack(player, monster);
+
+                                if(!monster.pass2(player)){
+                                    if(!monster.attack(player)){
+                                        bulplay = false;
+                                    }
+                                    else{
+                                        player.setWin(player.getWin()+1);
+                                        System.out.println("Игрок выиграл бой");
+                                    }
+                                }
+
                                 System.out.println("-------------");
                                 break;
                         }
