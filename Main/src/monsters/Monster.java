@@ -32,7 +32,7 @@ public class Monster implements IntMonster {
 //        int attack = random.nextInt(player.getSpec().getAttack()/2+1)+player.getSpec().getAttack()/2;
         //
         int armor = random.nextInt(player.getSpec().getAttack()/2+1);
-        int attack = player.getSpec().getArmor()+random.nextInt(player.getSpec().getAttack()+1);
+        int attack = player.getSpec().getArmor()+random.nextInt(player.getSpec().getAttack()+1)+1;
 
         int coins = random.nextInt(player.getSpec().getCoins()/2+1)+player.getSpec().getCoins()/2+2;
         this.spec = new Specification("Монстр"+n, hp, hp, coins, armor, attack);
@@ -109,6 +109,9 @@ public class Monster implements IntMonster {
             if(first==0){
                 //
                 int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2;
+                if(atak>player.getSpec().getAttack()){
+                    atak=player.getSpec().getAttack();
+                }
                 if((atak - getSpec().getArmor())>0){
                     hpMonster= hpMonster-(atak - getSpec().getArmor());
                 }
@@ -119,7 +122,10 @@ public class Monster implements IntMonster {
             }
             else{
                  //
-                int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
+                int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                if(atak>getSpec().getAttack()){
+                    atak=getSpec().getAttack();
+                }
                 if((atak - player.getSpec().getArmor())>0){
                     hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
                 }

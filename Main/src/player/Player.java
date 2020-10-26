@@ -55,6 +55,9 @@ public class Player extends AbstractPlayer {
                break;
             case "здоровье":
                spec.setHp(spec.getHp() + itm.getAll());
+               if(spec.getHp()>spec.getHpMax()){
+                   spec.setHpMax(spec.getHp());
+               }
                 System.out.println("Предмет - "+itm.getName());
                System.out.println("Ваше здоровье восстановлено на "+itm.getAll());
                break;

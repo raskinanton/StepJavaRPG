@@ -12,8 +12,9 @@ public class HardMonster extends Monster{
         super(player);
         System.out.println("Создан хардмонстр");
         Random rnd = new Random();
-        this.myhealth = rnd.nextInt(10)+1;
-        this.armorPlayer = rnd.nextInt(10)+3;
+        //this.myhealth = rnd.nextInt(10)+1;
+        this.myhealth = player.getSpec().getHp()/5;
+        this.armorPlayer = rnd.nextInt(player.getSpec().getArmor()/2+1)+player.getSpec().getArmor()/10;
 
     }
 
@@ -27,10 +28,18 @@ public class HardMonster extends Monster{
 
 
         while (hpPlayer>0 && hpMonster>0){
+            if(hpMonster<getSpec().getHp()/5 && myhealth!=0){
+                hpMonster = hpMonster+myhealth;
+                System.out.println("монстр применил для себя здоровье");
+                myhealth=0;
+            }
             int first = rnd.nextInt(2);
             if(first==0){
                 //
                 int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2;
+                if(atak>player.getSpec().getAttack()){
+                    atak=player.getSpec().getAttack();
+                }
                 if((atak - getSpec().getArmor())>0){
                     hpMonster= hpMonster-(atak - getSpec().getArmor());
                 }
@@ -42,9 +51,12 @@ public class HardMonster extends Monster{
             else{
                 switch (rnd.nextInt(2)){
                     case 0:
-                        int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
-                        if((atak - player.getSpec().getArmor())>0){
-                            hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
+                        int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                        if(atak>getSpec().getAttack()){
+                            atak=getSpec().getAttack();
+                        }
+                        if((atak - armorplayernow)>0){
+                            hpPlayer= hpPlayer-(atak - armorplayernow);
                         }
 
                         System.out.println("бьет монстр на "+atak);
@@ -63,9 +75,12 @@ public class HardMonster extends Monster{
                             System.out.println("------------");
                         }
                         else{
-                            int atak2 = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
-                            if((atak2 - player.getSpec().getArmor())>0){
-                                hpPlayer= hpPlayer-(atak2 - player.getSpec().getArmor());
+                            int atak2 = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                            if(atak2>getSpec().getAttack()){
+                                atak2=getSpec().getAttack();
+                            }
+                            if((atak2 - armorplayernow)>0){
+                                hpPlayer= hpPlayer-(atak2 - armorplayernow);
                             }
                             System.out.println("бьем от брони");
                             System.out.println("бьет монстр на "+atak2);

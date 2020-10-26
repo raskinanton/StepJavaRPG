@@ -69,22 +69,7 @@ public class Abs {
 
         }
     }
-    protected void printPlayer(Player player){
-        System.out.println("Имя игрока - "+player.getSpec().getName());
-        System.out.println("Количество hp - "+player.getSpec().getHp());
-        System.out.println("Количество монет - "+player.getSpec().getCoins());
-        System.out.println("Защита - "+player.getSpec().getArmor());
-        System.out.println("Атака - "+player.getSpec().getAttack());
 
-    }
-    protected void printMonster(Monster monster){
-        System.out.println("Имя монсра - "+monster.getSpec().getName());
-        System.out.println("Количество hp - "+monster.getSpec().getHp());
-        System.out.println("Количество монет для отступления- "+monster.getSpec().getCoins());
-        System.out.println("Защита - "+monster.getSpec().getArmor());
-        System.out.println("Атака - "+monster.getSpec().getAttack());
-
-    }
     protected ArrayList<Integer> madePlayer(ArrayList<String> label, Scanner scn){
         ArrayList<Integer> ar = new ArrayList<>();
         for(int i=0;i<label.size();i++){
@@ -116,30 +101,7 @@ public class Abs {
 
         return ar;
     }
-    public boolean war(Player player, Monster monster){
-        Random rnd = new Random();
-        System.out.println("Игрок победил");
-        boolean bul = true;
-            for(int i=0;i<10;i++){
-                //System.out.println(rnd.nextDouble());
-                int first = rnd.nextInt(2);
-                System.out.println(first);
-                if(first==0){
-                    System.out.println("бьет игрок");
-                    int rez = monster.getSpec().getHp()-(int)(player.getSpec().getAttack()* rnd.nextDouble());
-                    monster.getSpec().setHp(rez);
-                    System.out.println("hp монстра - "+monster.getSpec().getHp());
-                }
-                else{
-                    System.out.println("бьет монстр");
-                }
-            }
 
-
-
-
-        return  bul;
-    }
     public void payBack(Player player, Monster monster){
         System.out.println("Оплата за отступление получена. Можешь идти");
     }
@@ -183,7 +145,7 @@ public class Abs {
     }
     public Monster choiseMonster(Player  player){
         Monster mon = null;
-        if(player.getSpec().getArmor()>20){
+        if(player.getSpec().getArmor()>(player.getSpec().getHp()*40)/100){
             mon = new HardMonster(player);
         }
         else{
