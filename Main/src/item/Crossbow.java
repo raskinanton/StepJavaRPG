@@ -9,6 +9,7 @@ public class Crossbow extends BossItem implements item {
         super.setAll(damage);
         super.setLabel("арбалет");
     }
+    public Crossbow(){}
 
 
     @Override

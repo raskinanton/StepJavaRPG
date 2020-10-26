@@ -10,13 +10,11 @@ import java.util.List;
 public class Player extends AbstractPlayer {
     private Specification spec;
     private List<BossItem> itemsList = new ArrayList();
+    private int win = 0;
 
     public Player(String name, int hp, int hpMax, int coins, int armor, int attack){
         this.spec = new Specification(name, hp, hpMax,coins,armor, attack);
-        itemsList.add(new Coins("деньги", 10));
-        itemsList.add(new Crossbow("крутой арбалет", 20));
-        itemsList.add( new HealthBarrel("здоровье", 20));
-        itemsList.add( new PlateArmor("Кожанная броня", 30));
+
     }
 
     public List getItemsList() {
@@ -32,6 +30,7 @@ public class Player extends AbstractPlayer {
         System.out.println("Количество монет - "+spec.getCoins());
         System.out.println("Защита - "+spec.getArmor());
         System.out.println("Атака - "+spec.getAttack());
+        System.out.println("Число побед - "+getWin());
     }
 
     public void toUseItem(int i){
@@ -79,4 +78,13 @@ public class Player extends AbstractPlayer {
         itemsList.remove(i);
 
     }
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
 }

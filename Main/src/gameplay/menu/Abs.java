@@ -88,15 +88,15 @@ public class Abs {
         for(int i=0;i<label.size();i++){
 
             while (true){
-                System.out.println("Введите "+label.get(i));
+                System.out.println("Введите "+label.get(i)+", не более 100");
                 String param = scn.nextLine();
                 if(checkInt(param)){
                     int par = Integer.parseInt(param);
-                    if(i==0 && par>0){
+                    if(i==0 || i==3 && par>0 && par<=100){
                         ar.add(par);
                         break;
                     }
-                    else if(i>0 && par>-1){
+                    else if(i!=0 && i!=3 && par>-1 && par<=100){
                         ar.add(par);
                         break;
                     }
@@ -172,4 +172,42 @@ public class Abs {
 //        }
 //
 //    }
+
+    public void healthByCoin(Player player, Scanner scn){
+        int maxcoin = player.getSpec().getHpMax()-player.getSpec().getHp();
+
+        while (true){
+            System.out.println("У вас "+player.getSpec().getCoins()+" монет.");
+            System.out.println("Одна монета - одна единица здоровья");
+            System.out.println("Введите число монет, на которые хотите подлечиться. Поднять hp выше максимального" +
+                    player.getSpec().getHpMax()+", в этом методе нельзя.");
+
+            String param = scn.nextLine();
+            if(checkInt(param)){
+                int coin = Integer.parseInt(param);
+                if(coin>0 && coin<=player.getSpec().getCoins()){
+
+                    player.getSpec().setHp(player.getSpec().getHp()+coin);
+
+                    if(player.getSpec().getHp()>player.getSpec().getHpMax()){
+                        player.getSpec().setHp(player.getSpec().getHpMax());
+                    }
+                    else{
+                        maxcoin = coin;
+                    }
+
+                    System.out.println("Лечение игрока выполнено, на "+maxcoin);
+                    player.getSpec().setCoins(player.getSpec().getCoins()-maxcoin);
+                    break;
+                }
+                else{
+                    System.out.println("Вы ввели не подходящее число. Повторите");
+                }
+            }
+            else{
+                System.out.println("Вы ввели не соответствующее значение. Повторите");
+            }
+        }
+
+    }
 }

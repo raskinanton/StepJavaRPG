@@ -39,7 +39,6 @@ public class Game extends Abs {
             System.out.println("параметры игрока: ");
             //player.print();
             //выводим статистические данны игрока собственным методом. Лучше сделать в игроке метод
-            //printPlayer(player);
             player.printPlayer(player.getSpec());
             System.out.println("--------------");
             System.out.println("Выберите дальнейшую команду");
@@ -57,10 +56,7 @@ public class Game extends Abs {
                         System.out.println("параметры монстра: ");
                         Monster monster = new Monster(player);
                         monster.printMonster();
-                        //Monster mon = monster.madeMonster(0);
-//                        Monster monster = new Monster(player.getSpec().getHp()*player.getSpec().getAttack());
-//                        printMonstr(monster);
-                        //printMonstr(mon);
+                        //доделать выбор монстра
                         System.out.println("-------------");
                         String ss = "";
                             while (true){
@@ -77,7 +73,6 @@ public class Game extends Abs {
                         switch (ss){
                             case "a":
                                 // проводим атаку монстра. Рандомно кто первый бьет и каждый следующий удар, рандомно сила атаки
-                                //
                                 System.out.println("atak");
 
                                 //проверка результата боя. Если игрок проиграл, придет false, if сработает, и после switch
@@ -86,6 +81,7 @@ public class Game extends Abs {
                                     bulplay = false;
                                 }
                                 else{
+                                    player.setWin(player.getWin()+1);
                                     System.out.println("Игрок выиграл бой");
                                 }
 
@@ -106,14 +102,27 @@ public class Game extends Abs {
                     case "h":
                         //Лечение
                         System.out.println("add health");
+
+                        if(player.getSpec().getCoins()==0){
+                            System.out.println("Подлечиться за деньги нельзя. Выиграйте бои");
+                        }
+                        else{
+                            healthByCoin(player, scn);
+                        }
                         System.out.println("-------------");
                         break;
                     case "t":
                         System.out.println(" use thing");
-                        int numberItem = itemToDo(scn, player.getItemsList());
-                        if(numberItem>-1){
-                            player.toUseItem(numberItem);
+                        if(player.getItemsList().size()==0){
+                            System.out.println("Список вещей пуст");
                         }
+                        else{
+                            int numberItem = itemToDo(scn, player.getItemsList());
+                            if(numberItem>-1){
+                                player.toUseItem(numberItem);
+                            }
+                        }
+
 
                         System.out.println("-------------");
                         break;

@@ -26,8 +26,8 @@ public class Monster implements IntMonster {
         Random random = new Random();
         int n = random.nextInt(30);
         int hp = random.nextInt(player.getSpec().getHp())+player.getSpec().getHp()/2;
-        int armor = random.nextInt(player.getSpec().getArmor())+player.getSpec().getHp()/2;
-        int attack = random.nextInt(player.getSpec().getAttack())+player.getSpec().getAttack()/2;
+        int armor = random.nextInt(player.getSpec().getArmor()/2+1)+player.getSpec().getArmor()/2;
+        int attack = random.nextInt(player.getSpec().getAttack()/2)+player.getSpec().getAttack()/2;
         this.spec = new Specification("Монстр"+n, hp, hp, 0, armor, attack);
     }
 
@@ -99,7 +99,7 @@ public class Monster implements IntMonster {
         while (hpPlayer>0 && hpMonster>0){
             int first = rnd.nextInt(2);
             if(first==0){
-                int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble());
+                int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2;
                 if((atak - getSpec().getArmor())>0){
                     hpMonster= hpMonster-(atak - getSpec().getArmor());
                 }
@@ -109,7 +109,7 @@ public class Monster implements IntMonster {
             }
             else{
                 System.out.println("бьет монстр");
-                int atak = (int)(getSpec().getAttack()* rnd.nextDouble());
+                int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
                 if((atak - player.getSpec().getArmor())>0){
                     hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
                 }
@@ -137,6 +137,14 @@ public class Monster implements IntMonster {
 
     @Override
     public boolean pass(Player player) {
+
+
+
+
         return player.getSpec().getCoins() < spec.getCoins();
+    }
+
+    public Monster choiseMonster(Player player){
+        return null;
     }
 }
