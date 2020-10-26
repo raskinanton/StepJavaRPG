@@ -63,9 +63,9 @@ public class Monster implements IntMonster {
         itemsList.add(mapItem.get(numberCoins));
 
     }
-    public void initItem2() {
+    public void initItem2(int colItems) {
         Random randomNumberCoins = new Random();
-        int numberCoins = randomNumberCoins.nextInt(3) + 1;
+        int numberCoins = randomNumberCoins.nextInt(3) + colItems;
         for(int i=0;i<numberCoins;i++){
             switch (randomNumberCoins.nextInt(6)){
                 case 0:
@@ -118,8 +118,7 @@ public class Monster implements IntMonster {
                 System.out.println("------------");
             }
             else{
-                System.out.println("бьет монстр");
-                //
+                 //
                 int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
                 if((atak - player.getSpec().getArmor())>0){
                     hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
@@ -140,7 +139,7 @@ public class Monster implements IntMonster {
         }
         else{
             player.getSpec().setHp(hpPlayer);
-            initItem2();
+            initItem2(1);
             player.getItemsList().addAll(itemsList);
         }
 
@@ -156,16 +155,7 @@ public class Monster implements IntMonster {
         return player.getSpec().getCoins() < spec.getCoins();
     }
 
-//    public Monster choiseMonster(Player  player){
-//        Monster mon = null;
-//        if(player.getSpec().getArmor()>20){
-//            mon = new HardMonster();
-//        }
-//        else{
-//            mon = new Monster();
-//        }
-//        return mon;
-//    }
+
     public boolean pass2(Player player){
         boolean bul = true;
         if(player.getSpec().getCoins()<spec.getCoins()){
@@ -183,5 +173,9 @@ public class Monster implements IntMonster {
             System.out.println("Ты заплатил. "+spec.getCoins()+" монет. Можешь идти");
         }
         return bul;
+    }
+
+    public List<BossItem> getItemsList() {
+        return itemsList;
     }
 }

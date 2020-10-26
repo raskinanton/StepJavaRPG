@@ -7,10 +7,6 @@ import java.util.Scanner;
 public class Main extends Abs {
     public static void main(String[] args) {
 
-//        new Monster().initItem();
-//
-//        System.exit(0);
-
         System.out.println("Hello comrades!!");
         Scanner scn = new Scanner(System.in);
 

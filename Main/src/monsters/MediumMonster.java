@@ -10,4 +10,8 @@ public class MediumMonster extends Monster{
 
     }
 
+    @Override
+    public boolean attack(Player player) {
+        return super.attack(player);
+    }
 }
