@@ -1,6 +1,8 @@
 package gameplay.menu;
 
 import item.*;
+import monsters.HardMonster;
+import monsters.MediumMonster;
 import monsters.Monster;
 import player.Player;
 
@@ -209,5 +211,15 @@ public class Abs {
             }
         }
 
+    }
+    public Monster choiseMonster(Player  player){
+        Monster mon = null;
+        if(player.getSpec().getArmor()>20){
+            mon = new HardMonster(player);
+        }
+        else{
+            mon = new MediumMonster(player);
+        }
+        return mon;
     }
 }

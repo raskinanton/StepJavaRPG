@@ -54,7 +54,8 @@ public class Game extends Abs {
                         System.out.println("move");
 
                         System.out.println("параметры монстра: ");
-                        Monster monster = new Monster(player);
+                        //Monster monster = new Monster(player);
+                        Monster monster = choiseMonster(player);
                         monster.printMonster();
                         //доделать выбор монстра
                         System.out.println("-------------");

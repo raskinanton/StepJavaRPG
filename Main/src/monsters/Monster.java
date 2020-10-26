@@ -22,12 +22,18 @@ public class Monster implements IntMonster {
 
     }
 
+
     public Monster(Player player){
         Random random = new Random();
         int n = random.nextInt(30);
         int hp = random.nextInt(player.getSpec().getHp())+player.getSpec().getHp()/2;
-        int armor = random.nextInt(player.getSpec().getArmor()/2+1)+player.getSpec().getArmor()/2;
-        int attack = random.nextInt(player.getSpec().getAttack()/2+1)+player.getSpec().getAttack()/2;
+
+//        int armor = random.nextInt(player.getSpec().getArmor()/2+1)+player.getSpec().getArmor()/2;
+//        int attack = random.nextInt(player.getSpec().getAttack()/2+1)+player.getSpec().getAttack()/2;
+        //
+        int armor = random.nextInt(player.getSpec().getAttack()/2+1);
+        int attack = player.getSpec().getArmor()+random.nextInt(player.getSpec().getAttack()+1);
+
         int coins = random.nextInt(player.getSpec().getCoins()/2+1)+player.getSpec().getCoins()/2+2;
         this.spec = new Specification("Монстр"+n, hp, hp, coins, armor, attack);
     }
@@ -101,6 +107,7 @@ public class Monster implements IntMonster {
         while (hpPlayer>0 && hpMonster>0){
             int first = rnd.nextInt(2);
             if(first==0){
+                //
                 int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2;
                 if((atak - getSpec().getArmor())>0){
                     hpMonster= hpMonster-(atak - getSpec().getArmor());
@@ -108,9 +115,11 @@ public class Monster implements IntMonster {
 
                 System.out.println("бьет игрок на "+atak);
                 System.out.println("hp монстра - "+hpMonster);
+                System.out.println("------------");
             }
             else{
                 System.out.println("бьет монстр");
+                //
                 int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/2;
                 if((atak - player.getSpec().getArmor())>0){
                     hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
@@ -118,6 +127,7 @@ public class Monster implements IntMonster {
 
                 System.out.println("бьет монстр на "+atak);
                 System.out.println("hp игрока - "+hpPlayer);
+                System.out.println("------------");
             }
             try {
                 Thread.sleep(2000);
@@ -146,16 +156,27 @@ public class Monster implements IntMonster {
         return player.getSpec().getCoins() < spec.getCoins();
     }
 
-    public Monster choiseMonster(Player player){
-
-        return null;
-    }
+//    public Monster choiseMonster(Player  player){
+//        Monster mon = null;
+//        if(player.getSpec().getArmor()>20){
+//            mon = new HardMonster();
+//        }
+//        else{
+//            mon = new Monster();
+//        }
+//        return mon;
+//    }
     public boolean pass2(Player player){
         boolean bul = true;
         if(player.getSpec().getCoins()<spec.getCoins()){
             System.out.println("У тебя нехватка денег. Значит умри в бою");
             System.out.println("----------------------");
             bul = false;
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         else{
             player.getSpec().setCoins(player.getSpec().getCoins()-spec.getCoins());
