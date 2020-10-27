@@ -19,9 +19,6 @@ public class Monster implements IntMonster {
     public Specification getSpec() {
         return spec;
     }
-    public Monster(){
-
-    }
 
 
     public Monster(Player player){
