@@ -1,5 +1,6 @@
 package monsters;
 
+import gameplay.menu.Dodged;
 import item.*;
 import player.Player;
 import player.Specification;
@@ -102,44 +103,69 @@ public class Monster implements IntMonster {
         Random rnd = new Random();
         int hpPlayer = player.getSpec().getHp();
         int hpMonster = getSpec().getHp();
+        Dodged dodged = new Dodged();
 
+            Thread thread = new Thread(dodged);
+            thread.setDaemon(true);
+            thread.start();
 
         while (hpPlayer>0 && hpMonster>0){
-            int first = rnd.nextInt(2);
-            if(first==0){
-                //
-                int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2;
-                if(atak>player.getSpec().getAttack()){
-                    atak=player.getSpec().getAttack();
-                }
-                if((atak - getSpec().getArmor())>0){
-                    hpMonster= hpMonster-(atak - getSpec().getArmor());
+
+                    int first = rnd.nextInt(2);
+                    if(first==0){
+                        //
+                        int atak = (int)(player.getSpec().getAttack()* rnd.nextDouble())+player.getSpec().getAttack()/2+1;
+                        if(atak>player.getSpec().getAttack()){
+                            atak=player.getSpec().getAttack();
+                        }
+                        if((atak - getSpec().getArmor())>0){
+                            hpMonster= hpMonster-(atak - getSpec().getArmor());
+                        }
+
+                        System.out.println("бьет игрок на "+atak);
+                        System.out.println("hp монстра - "+hpMonster);
+                        System.out.println("------------");
+                    }
+                    else{
+                        if(dodged.getDod()==0){
+                            int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                            if(atak>getSpec().getAttack()){
+                                atak=getSpec().getAttack();
+                            }
+                            if((atak - player.getSpec().getArmor())>0){
+                                hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
+                            }
+                            System.out.println("бьет монстр на "+atak);
+                            System.out.println("hp игрока - "+hpPlayer);
+                            System.out.println("------------");
+                        }
+                        else if(dodged.getDod()==1){
+                            dodged.setDod(0);
+                            int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                            System.out.println("бьет монстр на "+atak);
+                            System.out.println("и игрок уклонился");
+                            System.out.println("hp игрока - "+hpPlayer);
+                            System.out.println("------------");
+                        }
+
+
+                   }
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
 
-                System.out.println("бьет игрок на "+atak);
-                System.out.println("hp монстра - "+hpMonster);
-                System.out.println("------------");
-            }
-            else{
-                 //
-                int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
-                if(atak>getSpec().getAttack()){
-                    atak=getSpec().getAttack();
-                }
-                if((atak - player.getSpec().getArmor())>0){
-                    hpPlayer= hpPlayer-(atak - player.getSpec().getArmor());
-                }
+        thread.interrupt();
+        try {
 
-                System.out.println("бьет монстр на "+atak);
-                System.out.println("hp игрока - "+hpPlayer);
-                System.out.println("------------");
-            }
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            thread.join();
+        } catch (InterruptedException e) {
+
+            //e.printStackTrace();
         }
+
         if(hpMonster>0){
             bul=false;
         }
@@ -155,9 +181,6 @@ public class Monster implements IntMonster {
     @Override
     public boolean pass(Player player) {
 
-
-
-
         return player.getSpec().getCoins() < spec.getCoins();
     }
 
@@ -171,7 +194,7 @@ public class Monster implements IntMonster {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
         else{
@@ -184,4 +207,5 @@ public class Monster implements IntMonster {
     public List<BossItem> getItemsList() {
         return itemsList;
     }
+
 }

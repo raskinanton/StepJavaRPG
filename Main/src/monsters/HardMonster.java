@@ -1,5 +1,6 @@
 package monsters;
 
+import gameplay.menu.Dodged;
 import player.Player;
 
 import java.util.Random;
@@ -26,6 +27,12 @@ public class HardMonster extends Monster{
         int hpMonster = getSpec().getHp();
         int armorplayernow = player.getSpec().getArmor();
 
+        Dodged dodged = new Dodged();
+
+        Thread thread = new Thread(dodged);
+        thread.setDaemon(true);
+        thread.start();
+
 
         while (hpPlayer>0 && hpMonster>0){
             if(hpMonster<getSpec().getHp()/5 && myhealth!=0){
@@ -49,46 +56,56 @@ public class HardMonster extends Monster{
                 System.out.println("------------");
             }
             else{
-                switch (rnd.nextInt(2)){
-                    case 0:
-                        int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
-                        if(atak>getSpec().getAttack()){
-                            atak=getSpec().getAttack();
-                        }
-                        if((atak - armorplayernow)>0){
-                            hpPlayer= hpPlayer-(atak - armorplayernow);
-                        }
+                if(dodged.getDod()==0){
+                    switch (rnd.nextInt(2)){
+                        case 0:
+                            int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                            if(atak>getSpec().getAttack()){
+                                atak=getSpec().getAttack();
+                            }
+                            if((atak - armorplayernow)>0){
+                                hpPlayer= hpPlayer-(atak - armorplayernow);
+                            }
 
-                        System.out.println("бьет монстр на "+atak);
-                        System.out.println("hp игрока - "+hpPlayer);
-                        System.out.println("------------");
-
-                        break;
-                    case 1:
-                        if(armorplayernow!=0){
-                            armorplayernow = armorplayernow - armorPlayer;
-                            if(armorplayernow<0){
-                                armorplayernow = 0;
-                            }
-                            System.out.println("бьет монстр по броне на "+armorPlayer);
-                            System.out.println("armor игрока - "+armorplayernow);
-                            System.out.println("------------");
-                        }
-                        else{
-                            int atak2 = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
-                            if(atak2>getSpec().getAttack()){
-                                atak2=getSpec().getAttack();
-                            }
-                            if((atak2 - armorplayernow)>0){
-                                hpPlayer= hpPlayer-(atak2 - armorplayernow);
-                            }
-                            System.out.println("бьем от брони");
-                            System.out.println("бьет монстр на "+atak2);
+                            System.out.println("бьет монстр на "+atak);
                             System.out.println("hp игрока - "+hpPlayer);
                             System.out.println("------------");
-                        }
 
-                        break;
+                            break;
+                        case 1:
+                            if(armorplayernow!=0){
+                                armorplayernow = armorplayernow - armorPlayer;
+                                if(armorplayernow<0){
+                                    armorplayernow = 0;
+                                }
+                                System.out.println("бьет монстр по броне на "+armorPlayer);
+                                System.out.println("armor игрока - "+armorplayernow);
+                                System.out.println("------------");
+                            }
+                            else{
+                                int atak2 = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                                if(atak2>getSpec().getAttack()){
+                                    atak2=getSpec().getAttack();
+                                }
+                                if((atak2 - armorplayernow)>0){
+                                    hpPlayer= hpPlayer-(atak2 - armorplayernow);
+                                }
+                                System.out.println("бьем от брони");
+                                System.out.println("бьет монстр на "+atak2);
+                                System.out.println("hp игрока - "+hpPlayer);
+                                System.out.println("------------");
+                            }
+
+                            break;
+                    }
+                }
+                else if(dodged.getDod()==1){
+                    dodged.setDod(0);
+                    int atak = (int)(getSpec().getAttack()* rnd.nextDouble())+getSpec().getAttack()/3;
+                    System.out.println("бьет монстр на "+atak);
+                    System.out.println("и игрок уклонился");
+                    System.out.println("hp игрока - "+hpPlayer);
+                    System.out.println("------------");
                 }
 
             }
@@ -97,6 +114,13 @@ public class HardMonster extends Monster{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+        thread.interrupt();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+
+            //e.printStackTrace();
         }
         if(hpMonster>0){
             bul=false;
